@@ -2,12 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { ErrorPage } from './ErrorPage.tsx'
+import { ErrorPage } from './ErrorPage'
 import './index.css'
-import { DeviceDetails } from './routes/DeviceDetails.tsx'
-import { Devices } from './routes/Devices.tsx'
-import { Root } from './routes/Root.tsx'
-import store from './store.ts'
+import { DeviceDetails } from './routes/DeviceDetails'
+import { Devices } from './routes/Devices'
+import { Root } from './routes/Root'
+import store from './store'
 
 const router = createBrowserRouter([
   {
