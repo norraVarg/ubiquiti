@@ -10,19 +10,26 @@ export const enum ProductLine {
   EdgeMax = 'EdgeMax',
 }
 
+export type ViewMode = 'grid' | 'list'
+
 export interface DevicesState {
   all: Device[]
   filters: ProductLine[]
+  viewMode: ViewMode | null
 }
 const initialState: DevicesState = {
   all: [],
   filters: [],
+  viewMode: null
 }
 
 const devicesSlice = createSlice({
   name: 'devices',
   initialState,
   reducers: {
+    setViewMode: (state, action: PayloadAction<ViewMode>) => {
+      state.viewMode = action.payload
+    },
     setAll: (state, action: PayloadAction<Device[]>) => {
       state.all = action.payload
     },
@@ -37,5 +44,5 @@ const devicesSlice = createSlice({
   },
 })
 
-export const { setAll, setFilters, filterDevices } = devicesSlice.actions
+export const { setViewMode, setAll, setFilters, filterDevices } = devicesSlice.actions
 export default devicesSlice.reducer
