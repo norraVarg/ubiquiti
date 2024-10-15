@@ -8,6 +8,7 @@ export const DevicesTable = () => {
   const filters = useAppSelector((state) => state.devices.filters)
   const all = useAppSelector((state) => state.devices.all)
   const viewMode = useAppSelector((state) => state.devices.viewMode)
+  const isGridView = viewMode === 'grid'
 
   // todo: implement pagination on scroll for large data sets
   const devices = useMemo(() => {
@@ -19,8 +20,8 @@ export const DevicesTable = () => {
   }, [filters, all])
 
   return (
-    <div className=''>
-      {viewMode === 'grid' ? (
+    <div className={`${isGridView ? 'mt-2' : 'mt-0'}`}>
+      {isGridView ? (
         <GridView devices={devices} />
       ) : (
         <ListView devices={devices} />

@@ -30,8 +30,8 @@ export const JsonCard = (props: Props) => {
       </div>
       <div className='flex gap-4'>
         {/* todo: show a tooltip with a message "JSON is copied" for 2 seconds */}
-        <button onClick={onClickCopyJson} className='text-web-unifi-text-3 hover:text-web-unifi-color-ublue-06 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300'>Copy JSON</button>
-        <button onClick={togglePretty} className='text-web-unifi-text-3 hover:text-web-unifi-color-ublue-06 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300'>{isPretty ? 'I prefer raw :)' : 'Make it Pretty!'}</button>
+        <button onClick={onClickCopyJson} className='text-web-unifi-text-3 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300'>Copy JSON</button>
+        <button onClick={togglePretty} className='text-web-unifi-text-3 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300'>{isPretty ? 'I prefer raw :)' : 'Make it Pretty!'}</button>
       </div>
     </div>
   )

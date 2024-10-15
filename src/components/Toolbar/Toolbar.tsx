@@ -1,5 +1,6 @@
 import { setViewMode } from '../../features/devices/devicesSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks'
+import { Filter } from '../Filter/Filter'
 
 export const Toolbar = () => {
   const dispatch = useAppDispatch()
@@ -15,7 +16,7 @@ export const Toolbar = () => {
   const viewMode = useAppSelector((state) => state.devices.viewMode)
 
   return (
-    <div className='flex items-center justify-end'>
+    <div className='flex items-center justify-end gap-1'>
       <div className='mr-auto'>search</div>
       <button onClick={onClickListView} className={`${viewMode === 'list' ? 'fill-web-unifi-color-ublue-06' : 'fill-web-unifi-color-neutral-8'} flex items-center justify-center w-9 h-9 hover:bg-web-unifi-color-neutral-2 rounded border-web-unifi-color-ublue-06 focus:border transition ease-in-out duration-300`}>
         <svg className='w-4 h-4' viewBox='0 0 14 14'>
@@ -30,7 +31,7 @@ export const Toolbar = () => {
           <path d="M5.5 5.5V1H1v4.5h4.5ZM1 0h4.5a1 1 0 0 1 1 1v4.5a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1Zm4.5 13V8.5H1V13h4.5ZM1 7.5h4.5a1 1 0 0 1 1 1V13a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1ZM13 1v4.5H8.5V1H13Zm0-1H8.5a1 1 0 0 0-1 1v4.5a1 1 0 0 0 1 1H13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1Zm0 13V8.5H8.5V13H13ZM8.5 7.5H13a1 1 0 0 1 1 1V13a1 1 0 0 1-1 1H8.5a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1Z" />
         </svg>
       </button>
-      {/* <Filter /> */}
+      <Filter />
     </div>
   )
 }

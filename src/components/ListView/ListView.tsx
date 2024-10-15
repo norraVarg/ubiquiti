@@ -10,7 +10,7 @@ export const ListView = (props: Props) => {
 
   return (
     <>
-      <div className='grid grid-cols-[40px_1fr_2fr] h-9 border-b border-web-unifi-color-neutral-3'>
+      <div className='grid grid-cols-[40px_1fr_2fr] h-9 border-b border-web-unifi-color-neutral-3 items-center'>
         <span className='col-start-2 font-bold'>Product Line</span>
         <span className='font-bold'>Name</span>
       </div>

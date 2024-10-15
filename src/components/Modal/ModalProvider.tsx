@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({ title, children }) => {
       <div className="flex flex-col gap-2 m-40 relative rounded-lg p-3 bg-web-unifi-color-neutral-0" onClick={(e) => e.stopPropagation()}>
         <div className='flex justify-between'>
           {title && <h2 className="text-web-unifi-text-1 font-bold">{title}</h2>}
-          <button className="self-end text-web-unifi-text-3 hover:text-web-unifi-color-ublue-06 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300" onClick={close}>Close</button>
+          <button className="self-end text-web-unifi-text-3 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300" onClick={close}>Close</button>
         </div>
         {children}
       </div>

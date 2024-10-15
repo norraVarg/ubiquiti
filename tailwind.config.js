@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        '2xs': '10px',
+      },
       height: {
         3.4: '12px',
         85: '292px',
@@ -29,6 +32,8 @@ export default {
       'web-unifi-color-neutral-8': '#838691',
       'web-unifi-color-neutral-10': '#50565E',
       'web-unifi-color-ublue-06': '#006FFF',
+      'web-unifi-color-red-03': '#F9B0B2',
+      'web-unifi-color-red-06': '#F03A3E',
     }
   },
   plugins: [],
