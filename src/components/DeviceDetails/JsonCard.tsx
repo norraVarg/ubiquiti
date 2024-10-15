@@ -20,7 +20,7 @@ export const JsonCard = (props: Props) => {
   }
 
   return (
-    <div className='flex flex-col items-center gap-8'>
+    <div className='flex flex-col items-center gap-3'>
       <div className='overflow-auto max-h-[calc(100vh-200px)] bg-web-unifi-color-neutral-2 p-2 rounded-lg'>
         {isPretty ? (
           <pre className=''>{json}</pre>

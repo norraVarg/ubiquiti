@@ -1,7 +1,7 @@
 import { DevicesTable } from '../components/DevicesTable/DevicesTable'
 import { Toolbar } from '../components/Toolbar/Toolbar'
 
-export const Devices = () => {
+export const DevicesRoute = () => {
   return (
     <div id="devices">
       {/* <Filter /> */}

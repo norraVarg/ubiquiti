@@ -6,7 +6,7 @@ import { Device } from '../features/devices/definitions'
 import { useAppSelector } from '../hooks'
 import { getPreviousAndNextDevices } from '../utils/utils'
 
-export const DeviceDetailsPage = () => {
+export const DeviceDetailsRoute = () => {
   // to improve:: 
   // fetch device data from api with device id from url search params
   // instead of passing preloaded device data via location state

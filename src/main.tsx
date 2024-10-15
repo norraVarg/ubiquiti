@@ -5,9 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ErrorPage } from './error-page'
 import './index.css'
 import store from './store'
-import { DeviceDetailsPage } from './routes/device-details'
+import { DeviceDetailsRoute } from './routes/device-details-route'
 import { Root } from './routes/root'
-import { Devices } from './routes/devices'
+import { DevicesRoute } from './routes/devices-route'
 import { ModalProvider } from './components/Modal/ModalProvider'
 
 const router = createBrowserRouter([
@@ -18,11 +18,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Devices />,
+        element: <DevicesRoute />,
       },
       {
         path: '/device',
-        element: <DeviceDetailsPage />,
+        element: <DeviceDetailsRoute />,
       },
     ],
   },
