@@ -8,13 +8,11 @@ interface Props {
 export const GridView = (props: Props) => {
   const { devices } = props
 
-  // https://static.ui.com/fingerprint/ui/images/3e9ea70f-416b-4c66-8740-1b6d41465b87/default/1435ef4d1b7caf065251ea2fcab512fb.png
-
   return (
     <div className='grid grid-cols-[repeat(auto-fill,minmax(216px,1fr))] gap-4 overflow-y-auto max-h-screen-70 px-4'>
       {devices.map((device) => {
         return (
-          <Link to={`device?id=${device.id}`} key={device.id} className='transition ease-in-out duration-300 hover:border-web-unifi-color-ublue-06 grid grid-cols-2 grid-rows-[100px_1fr_1fr] border-web-unifi-color-neutral-3 border rounded-lg shadow-sm'>
+          <Link to={`device?id=${device.id}`} state={device} key={device.id} className='transition ease-in-out duration-300 hover:border-web-unifi-color-ublue-06 grid grid-cols-2 grid-rows-[100px_1fr_1fr] border-web-unifi-color-neutral-3 border rounded-lg shadow-sm'>
             <div className='bg-web-unifi-color-neutral-1 grid col-start-1 col-span-2 row-start-1 row-span-1 justify-center items-center rounded-lg'>
               <img className='w-24 h-24' src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_128x128.png`} />
             </div>

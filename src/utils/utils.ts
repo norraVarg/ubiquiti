@@ -1,3 +1,4 @@
+import { Device } from '../features/devices/definitions'
 import { ProductLine } from '../features/devices/devicesSlice'
 
 export const getUpdatedFilters = (filters: ProductLine[], toggledFilter: ProductLine) => {
@@ -6,4 +7,15 @@ export const getUpdatedFilters = (filters: ProductLine[], toggledFilter: Product
   }
 
   return [...filters, toggledFilter]
+}
+
+export const getPreviousAndNextDevices = (devices: Device[], currentDeviceId: string): { previousDevice: Device | undefined, nextDevice: Device | undefined } => {
+  const currentIndex = devices.findIndex((device) => device.id === currentDeviceId)
+  const previousIndex = currentIndex - 1
+  const nextIndex = currentIndex + 1
+
+  return {
+    previousDevice: devices[previousIndex],
+    nextDevice: devices[nextIndex],
+  }
 }

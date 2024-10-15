@@ -5,9 +5,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ErrorPage } from './error-page'
 import './index.css'
 import store from './store'
-import { DeviceDetails } from './routes/device-details'
+import { DeviceDetailsPage } from './routes/device-details'
 import { Root } from './routes/root'
 import { Devices } from './routes/devices'
+import { ModalProvider } from './components/Modal/ModalProvider'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/device',
-        element: <DeviceDetails />,
+        element: <DeviceDetailsPage />,
       },
     ],
   },
@@ -30,7 +31,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ModalProvider>
+        <RouterProvider router={router} />
+      </ModalProvider>
     </Provider>
   </StrictMode>,
 )

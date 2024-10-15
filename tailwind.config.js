@@ -3,9 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      height: {
+        3.4: '12px',
+        85: '292px',
+      },
       maxHeight: {
         'screen-70': '70vh',
-      }
+      },
+      width: {
+        1.9: '6px',
+        85: '292px',
+        444: '444px',
+      },
     },
     colors: {
       'web-unifi-text-0': '#000000',

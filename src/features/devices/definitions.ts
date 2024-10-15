@@ -5,7 +5,6 @@ export interface DeviceIcon {
 }
 
 export interface Device {
-
   guids: string[]
   icon: DeviceIcon
   id: string
@@ -40,6 +39,29 @@ export interface Device {
     line: string
     nameLegacy: string[]
   }
+  unifi?: {
+    network?: {
+      details?: {
+        ipsThroughput: string
+      }
+      numberOfPorts?: number
+      radios?: {
+        na?: {
+          gain?: number,
+          maxPower?: number,
+          maxSpeedMegabitsPerSecond?: number
+        }
+        ng?: {
+          gain?: number,
+          maxPower?: number,
+          maxSpeedMegabitsPerSecond?: number
+        }
+      }
+    }
+    power?: {
+      capacity: number
+    }
+  },
   videos: {}
 }
 
