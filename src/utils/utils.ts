@@ -1,5 +1,4 @@
-import { Device } from '../features/devices/definitions'
-import { ProductLine } from '../features/devices/devicesSlice'
+import { Device, ProductLine } from '../features/devices/definitions'
 
 export const getUpdatedFilters = (filters: ProductLine[], toggledFilter: ProductLine) => {
   if (filters.includes(toggledFilter)) {

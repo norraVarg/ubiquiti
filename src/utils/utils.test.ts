@@ -1,7 +1,6 @@
 
 import { describe, expect, it, } from 'vitest'
-import { Device } from '../features/devices/definitions'
-import { ProductLine } from '../features/devices/devicesSlice'
+import { Device, ProductLine } from '../features/devices/definitions'
 import { getPreviousAndNextDevices, getUpdatedFilters } from './utils'
 
 describe('getUpdatedFilters', () => {
