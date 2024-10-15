@@ -1,7 +1,7 @@
 import { ProductLine, setFilters } from '../../features/devices/devicesSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { getUpdatedFilters } from '../../utils/utils'
-import { Menu } from './Menu'
+import { Menu } from '../Menu/Menu'
 
 const FILTERS: ProductLine[] = [
   ProductLine.UniFi,

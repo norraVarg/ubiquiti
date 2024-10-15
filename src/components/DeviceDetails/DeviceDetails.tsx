@@ -1,6 +1,6 @@
 import { Device } from '../../features/devices/definitions'
-import { useModal } from '../Modal/ModalProvider'
-import { JsonCard } from './JsonCard'
+import { useModal } from '../ModalProvider/ModalProvider'
+import { JsonCard } from '../JsonCard/JsonCard'
 
 interface Props {
   device: Device

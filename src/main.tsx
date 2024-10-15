@@ -8,7 +8,7 @@ import store from './store'
 import { DeviceDetailsRoute } from './routes/device-details-route'
 import { Root } from './routes/root'
 import { DevicesRoute } from './routes/devices-route'
-import { ModalProvider } from './components/Modal/ModalProvider'
+import { ModalProvider } from './components/ModalProvider/ModalProvider'
 
 const router = createBrowserRouter([
   {

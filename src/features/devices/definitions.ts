@@ -31,7 +31,7 @@ export interface Device {
     k3?: string
   }[]
   uisp?: {
-    bleServices: {}
+    bleServices: object
     firmware: {
       board: string[]
       platform: string | null
@@ -62,6 +62,6 @@ export interface Device {
       capacity: number
     }
   },
-  videos: {}
+  videos: object
 }
 
