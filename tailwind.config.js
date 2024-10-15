@@ -8,7 +8,9 @@ export default {
         85: '292px',
       },
       maxHeight: {
-        'screen-70': '70vh',
+        'screen-75': '75vh',
+        'screen-80': '80vh',
+        'screen-82': '82vh',
       },
       width: {
         1.9: '6px',
