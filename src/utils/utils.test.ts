@@ -1,7 +1,8 @@
 
 import { describe, expect, it, } from 'vitest'
-import { getUpdatedFilters } from './utils'
+import { Device } from '../features/devices/definitions'
 import { ProductLine } from '../features/devices/devicesSlice'
+import { getPreviousAndNextDevices, getUpdatedFilters } from './utils'
 
 describe('getUpdatedFilters', () => {
   it('should add a filter if it does not exist', () => {
@@ -30,5 +31,42 @@ describe('getUpdatedFilters', () => {
     const toggledFilter = ProductLine.UniFi
     const updatedFilters = getUpdatedFilters(filters, toggledFilter)
     expect(updatedFilters).toEqual([])
+  })
+})
+
+describe('getPreviousAndNextDevices', () => {
+  const devices = [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ] as Device[]
+
+  it('should return previous and next devices', () => {
+    const currentDeviceId = '2'
+    const { previousDevice, nextDevice } = getPreviousAndNextDevices(devices, currentDeviceId)
+    expect(previousDevice).toEqual(devices[0])
+    expect(nextDevice).toEqual(devices[2])
+  })
+
+  it('should return undefined for previous device when current device is the first device', () => {
+    const currentDeviceId = '1'
+    const { previousDevice, nextDevice } = getPreviousAndNextDevices(devices, currentDeviceId)
+    expect(previousDevice).toBeUndefined()
+    expect(nextDevice).toEqual(devices[1])
+  })
+
+  it('should return undefined for next device when current device is the last device', () => {
+    const currentDeviceId = '3'
+    const { previousDevice, nextDevice } = getPreviousAndNextDevices(devices, currentDeviceId)
+    expect(previousDevice).toEqual(devices[1])
+    expect(nextDevice).toBeUndefined()
+  })
+
+  it('should return undefined for previous and next device when devices is empty', () => {
+    const devices = [] as Device[]
+    const currentDeviceId = '3'
+    const { previousDevice, nextDevice } = getPreviousAndNextDevices(devices, currentDeviceId)
+    expect(previousDevice).toBeUndefined()
+    expect(nextDevice).toBeUndefined()
   })
 })
