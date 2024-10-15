@@ -16,9 +16,9 @@ export const DeviceDetailsRoute = () => {
 
   const [currentDevice, setCurrentDevice] = useState<Device>(device)
 
-  const devices = useAppSelector((state) => state.devices.all)
+  const filteredDevices = useAppSelector((state) => state.devices.filteredDevices)
 
-  const { previousDevice, nextDevice } = getPreviousAndNextDevices(devices, currentDevice.id)
+  const { previousDevice, nextDevice } = getPreviousAndNextDevices(filteredDevices, currentDevice.id)
 
   const onClickPrevious = () => {
     if (previousDevice) {

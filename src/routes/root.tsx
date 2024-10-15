@@ -2,15 +2,15 @@ import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/Header/Header'
 import data from '../data.json'
-import { setAll } from '../features/devices/devicesSlice'
+import { fetchDevicesSuccess } from '../features/devices/devicesSlice'
 import { useAppDispatch } from '../hooks'
 
 export const Root = () => {
   const dispatch = useAppDispatch()
 
-  // todo: fetch data with rtk-query instead of using static mock data
+  // to improve: fetch data with rtk-query instead of using static mock data
   useEffect(() => {
-    dispatch(setAll(data.devices))
+    dispatch(fetchDevicesSuccess(data.devices))
   }, [])
 
   return (

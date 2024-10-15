@@ -1,9 +1,27 @@
-// todo: use zod to validate the data
+export interface DevicesState {
+  all: Device[]
+  filteredDevices: Device[]
+  filters: ProductLine[]
+  viewMode: ViewMode | null
+}
+
+export const enum ProductLine {
+  UniFi = 'UniFi',
+  UniFiLTE = 'UniFi LTE',
+  UniFiProtect = 'UniFi Protect',
+  UniFiAccess = 'UniFi Access',
+  AirMax = 'airMax',
+  EdgeMax = 'EdgeMax',
+}
+
+export type ViewMode = 'grid' | 'list'
+
 export interface DeviceIcon {
   id: string
   resolutions: number[][]
 }
 
+// todo: use zod to validate the data
 export interface Device {
   guids: string[]
   icon: DeviceIcon

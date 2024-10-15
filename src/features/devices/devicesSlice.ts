@@ -1,24 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Device } from './definitions'
+import { Device, DevicesState, ProductLine, ViewMode } from './definitions'
 
-export const enum ProductLine {
-  UniFi = 'UniFi',
-  UniFiLTE = 'UniFi LTE',
-  UniFiProtect = 'UniFi Protect',
-  UniFiAccess = 'UniFi Access',
-  AirMax = 'airMax',
-  EdgeMax = 'EdgeMax',
-}
-
-export type ViewMode = 'grid' | 'list'
-
-export interface DevicesState {
-  all: Device[]
-  filters: ProductLine[]
-  viewMode: ViewMode | null
-}
 const initialState: DevicesState = {
   all: [],
+  filteredDevices: [],
   filters: [],
   viewMode: null
 }
@@ -27,22 +12,21 @@ const devicesSlice = createSlice({
   name: 'devices',
   initialState,
   reducers: {
-    setViewMode: (state, action: PayloadAction<ViewMode>) => {
-      state.viewMode = action.payload
-    },
-    setAll: (state, action: PayloadAction<Device[]>) => {
+    fetchDevicesSuccess: (state, action: PayloadAction<Device[]>) => {
       state.all = action.payload
+      state.filteredDevices = action.payload
     },
     setFilters: (state, action: PayloadAction<ProductLine[]>) => {
       state.filters = action.payload
+      state.filteredDevices = action.payload.length > 0 ?
+        state.all.filter((device) => state.filters.includes(device.line.name as ProductLine)) :
+        state.all
     },
-    filterDevices: (state, action: PayloadAction<string[]>) => {
-      // todo: filter devices
-      console.log(action.payload)
-      return state
+    setViewMode: (state, action: PayloadAction<ViewMode>) => {
+      state.viewMode = action.payload
     },
   },
 })
 
-export const { setViewMode, setAll, setFilters, filterDevices } = devicesSlice.actions
+export const { fetchDevicesSuccess, setFilters, setViewMode } = devicesSlice.actions
 export default devicesSlice.reducer

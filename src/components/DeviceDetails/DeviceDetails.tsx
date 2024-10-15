@@ -24,7 +24,7 @@ export const DeviceDetails = (props: Props) => {
   // so only relavent information is shown
   return (
     <div className='flex flex-col md:flex-row md:justify-center gap-8 m-auto w-[calc(100vw-56px)] pb-4'>
-      <img className='self-center h-64 w-64 md:h-85 md:w-85 bg-web-unifi-color-neutral-1 rounded-lg' onError={onErrorImg} src={`https://static.ui.com/fingerprint/ui/images/${device.id}/default/${device.images.default}.png`} />
+      <img className='self-center md:self-start h-64 w-64 md:h-85 md:w-85 bg-web-unifi-color-neutral-1 rounded-lg' onError={onErrorImg} src={`https://static.ui.com/fingerprint/ui/images/${device.id}/default/${device.images.default}.png`} />
       <div className='flex flex-col w-85 md:w-444 gap-2'>
         <h1 className='font-bold text-2xl text-opacity-85 text-web-unifi-text-0'>{device.product.name}</h1>
         <span className='text-web-unifi-text-0 text-opacity-45 mb-4'>{device.line.name}</span>
