@@ -9,7 +9,7 @@ export const GridView = (props: Props) => {
   const { devices } = props
 
   return (
-    <div className='grid grid-cols-[repeat(auto-fill,150px)] justify-center md:justify-start md:grid-cols-[repeat(auto-fill,216px)] gap-3 md:gap-4 overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-180px)] px-2 md:px-4'>
+    <div className='grid grid-cols-[repeat(auto-fill,150px)] gap-5 justify-center md:justify-start md:grid-cols-[repeat(auto-fill,210px)] overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-180px)] px-2 md:px-4'>
       {devices.map((device) => {
         return (
           <Link to={`device?id=${device.id}`} state={device} key={device.id} className='transition ease-in-out duration-300 hover:border-web-unifi-color-ublue-06 grid grid-cols-1 grid-rows-[100px_1fr_1fr] border-web-unifi-color-neutral-3 border rounded-lg shadow-sm'>
