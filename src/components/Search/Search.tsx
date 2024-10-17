@@ -69,7 +69,7 @@ export const Search = () => {
   }, [searchTerm])
 
   return (
-    <div ref={containerRef} className="relative w-80 sm:min-w-96 sm:ml-4">
+    <div ref={containerRef} className="relative w-full max-w-md sm:min-w-96 sm:ml-4">
       <svg className='absolute top-2.5 left-2 w-6 h-6 fill-web-unifi-color-neutral-8'>
         <path d="m16.853 16.146-2.847-2.844a6.25 6.25 0 1 0-.707.707l2.848 2.845a.496.496 0 0 0 .707-.002.498.498 0 0 0-.001-.706ZM4 9.25A5.256 5.256 0 0 1 9.25 4a5.256 5.256 0 0 1 5.25 5.25 5.256 5.256 0 0 1-5.25 5.25A5.256 5.256 0 0 1 4 9.25Z" />
       </svg>
