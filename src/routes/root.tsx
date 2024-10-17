@@ -16,7 +16,7 @@ export const Root = () => {
   return (
     <div className='flex flex-col min-w-80'>
       <Header />
-      <div className='px-5 py-2 sm:px-10 sm:py-5'>
+      <div className='px-5 py-2 sm:px-8 sm:py-4'>
         <Outlet />
       </div>
     </div>

@@ -20,7 +20,7 @@ export const Toolbar = () => {
   return (
     <div className='flex flex-col sm:flex-row py-2 gap-2'>
       <div className='flex items-center justify-end gap-1 sm:order-last sm:ml-auto sm:w-full'>
-        <span className='text-web-unifi-text-4 text-sm mr-auto ml-3 '>{all.length} Devices</span>
+        <span className='text-web-unifi-text-4 text-sm mr-auto ml-3 text-nowrap'>{all.length} Devices</span>
         <button onClick={onClickListView} className={`${viewMode === 'list' ? 'fill-web-unifi-color-ublue-06' : 'fill-web-unifi-color-neutral-8'} flex items-center justify-center w-9 h-9 hover:bg-web-unifi-color-neutral-2 rounded border-web-unifi-color-ublue-06 focus:border transition ease-in-out duration-300`}>
           <svg className='w-4 h-4' viewBox='0 0 14 14'>
             <mask id="a">
