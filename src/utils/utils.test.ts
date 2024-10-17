@@ -1,7 +1,93 @@
 
 import { describe, expect, it, } from 'vitest'
 import { Device, ProductLine } from '../features/devices/definitions'
-import { getPreviousAndNextDevices, getUpdatedFilters } from './utils'
+import { getPreviousAndNextDevices, getUpdatedFilters, getMatchingProperty } from './utils'
+
+describe('getMatchingProperty', () => {
+  it('should return matching property for product name', () => {
+    const device = {
+      product: {
+        name: 'UniFi Dream Machine'
+      },
+      shortnames: [],
+    } as unknown as Device
+    const term = 'dream'
+    const match = getMatchingProperty(device, term)
+    expect(match).toEqual({ property: 'Product Name', value: 'UniFi Dream Machine' })
+  })
+
+  it('should return matching property for product abbreviation', () => {
+    const device = {
+      product: {
+        abbrev: 'UDM'
+      },
+      shortnames: [],
+    } as unknown as Device
+    const term = 'udm'
+    const match = getMatchingProperty(device, term)
+    expect(match).toEqual({ property: 'Product Abbreviation', value: 'UDM' })
+  })
+
+  it('should return matching property for short name', () => {
+    const device = {
+      product: {
+        name: 'UniFi Dream Machine'
+      },
+      shortnames: ['UDM'],
+    } as Device
+    const term = 'udm'
+    const match = getMatchingProperty(device, term)
+    expect(match).toEqual({ property: 'Short Name', value: 'UDM' })
+  })
+
+  it('should return null when no match is found', () => {
+    const device = {
+      product: {
+        name: 'UniFi Dream Machine'
+      },
+      shortnames: [],
+    } as unknown as Device
+    const term = 'nano'
+    const match = getMatchingProperty(device, term)
+    expect(match).toBeNull()
+  })
+
+  it('should return null when product name is undefined', () => {
+    const device = {
+      product: {
+        name: undefined
+      },
+      shortnames: [],
+    } as unknown as Device
+    const term = 'dream'
+    const match = getMatchingProperty(device, term)
+    expect(match).toBeNull()
+  })
+
+  it('should return null when product abbreviation is undefined', () => {
+    const device = {
+      product: {
+        abbrev: undefined
+      },
+      shortnames: [],
+    } as unknown as Device
+    const term = 'udm'
+    const match = getMatchingProperty(device, term)
+    expect(match).toBeNull()
+  })
+
+  it('should return null when shortnames is undefined', () => {
+    const device = {
+      product: {
+        name: 'UniFi Dream Machine'
+      },
+      shortnames: undefined,
+    } as unknown as Device
+    const term = 'udm'
+    const match = getMatchingProperty(device, term)
+    expect(match).toBeNull()
+  })
+})
 
 describe('getUpdatedFilters', () => {
   it('should add a filter if it does not exist', () => {

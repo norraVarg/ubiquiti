@@ -34,6 +34,7 @@ export const DeviceDetailsRoute = () => {
 
   return device ? (
     <div className='flex flex-col justify-center gap-4'>
+      {/* todo: make the Navbar stick to top when scroll down the page */}
       <Navbar
         previousDevice={previousDevice}
         nextDevice={nextDevice}

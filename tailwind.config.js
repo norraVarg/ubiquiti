@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        sm: '600px',
+      },
       fontSize: {
         '2xs': '10px',
       },
@@ -11,9 +14,15 @@ export default {
         85: '292px',
       },
       maxHeight: {
+        'screen-50': '70vh',
+        'screen-68': '68vh',
+        'screen-72': '72vh',
         'screen-75': '75vh',
         'screen-80': '80vh',
         'screen-82': '82vh',
+      },
+      maxWidth: {
+        'screen-80': '80vw',
       },
       width: {
         1.9: '6px',
@@ -24,7 +33,9 @@ export default {
     colors: {
       'web-unifi-text-0': '#000000',
       'web-unifi-text-1': '#212327',
+      'web-unifi-text-2': '#50565E',
       'web-unifi-text-3': '#808893',
+      'web-unifi-text-4': '#BDBDBD',
       'web-unifi-color-neutral-0': '#FFFFFF',
       'web-unifi-color-neutral-1': '#F9FAFA',
       'web-unifi-color-neutral-2': '#F4F5F6',

@@ -39,6 +39,10 @@ export interface Device {
     abbrev: string
     name: string
   },
+  compliance?: {
+    modelName: string
+  }
+  deviceType?: string
   shortnames: string[]
   sku: string
   sysid?: string
@@ -59,6 +63,7 @@ export interface Device {
   }
   unifi?: {
     network?: {
+      model: string
       details?: {
         ipsThroughput: string
       }
