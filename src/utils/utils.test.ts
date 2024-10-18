@@ -1,7 +1,32 @@
 
 import { describe, expect, it, } from 'vitest'
 import { Device, ProductLine } from '../features/devices/definitions'
-import { getPreviousAndNextDevices, getUpdatedFilters, getMatchingProperty } from './utils'
+import { getMatchingProperty, getPreviousAndNextDevices, getTooltipStyles, getUpdatedFilters, TooltipPosition } from './utils'
+
+describe('getTooltipStyles', () => {
+  const testCases: { position: TooltipPosition; expected: string }[] = [
+    { position: 'top', expected: 'bottom-full left-1/2 transform -translate-x-1/2 mb-2' },
+    { position: 'bottom', expected: 'top-full left-1/2 transform -translate-x-1/2 mt-2' },
+    { position: 'left', expected: 'top-1/2 right-full transform -translate-y-1/2 mr-2' },
+    { position: 'right', expected: 'top-1/2 left-full transform -translate-y-1/2 ml-2' },
+    { position: 'top-left', expected: 'bottom-full right-0 mb-2' },
+    { position: 'top-right', expected: 'bottom-full left-0 mb-2' },
+    { position: 'bottom-left', expected: 'top-full right-0 mt-2' },
+    { position: 'bottom-right', expected: 'top-full left-0 mt-2' },
+  ]
+
+  testCases.forEach(({ position, expected }) => {
+    it(`should return correct styles for position: ${position}`, () => {
+      const result = getTooltipStyles(position)
+      expect(result).toBe(expected)
+    })
+  })
+
+  it('should return an empty string for an invalid position', () => {
+    const result = getTooltipStyles('invalid' as TooltipPosition)
+    expect(result).toBe('')
+  })
+})
 
 describe('getMatchingProperty', () => {
   it('should return matching property for product name', () => {
