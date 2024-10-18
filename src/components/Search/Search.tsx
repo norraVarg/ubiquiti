@@ -4,6 +4,7 @@ import { useAppSelector } from '../../hooks'
 import { Link } from 'react-router-dom'
 import { getMatchingProperty } from '../../utils/utils'
 import ClearButton from '../../component-lib/CloseButton/CloseButton'
+import { DeviceCard } from '../DeviceCard/DeviceCard'
 
 export interface SearchMatch {
   property: string
@@ -19,6 +20,7 @@ export const Search = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResults>([])
   const [show, setShow] = useState(false)
+  const [hoveredDevice, setHoveredDevice] = useState<Device | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const filteredDevices = useAppSelector((state) => state.devices.filteredDevices)
 
@@ -101,8 +103,10 @@ export const Search = () => {
             <Link
               to={`device?id=${device.id}`}
               state={device}
-              key={index}
+              onMouseEnter={() => setHoveredDevice(device)}
+              onMouseLeave={() => setHoveredDevice(null)}
               className="cursor-pointer flex items-center bg-web-unifi-color-neutral-0 px-2 py-1.5 h-fit transition ease-in-out duration-300 hover:bg-web-unifi-color-ublue-06 hover:bg-opacity-5 text-web-unifi-text-1 text-opacity-60 border-b border-web-unifi-color-neutral-3"
+              key={index}
             >
               {highlightMatch(match.value, searchTerm)}
               {match.property === 'Product Name' && <span className='ml-2'>({device.product.abbrev})</span>}
@@ -114,6 +118,10 @@ export const Search = () => {
           {searchResults.length === 0 && <span className='cursor-pointer flex items-center bg-web-unifi-color-neutral-0 px-2 py-1 h-fit transition ease-in-out duration-300 hover:bg-web-unifi-color-ublue-06 hover:bg-opacity-5 text-web-unifi-text-1 text-opacity-60 border-b border-web-unifi-color-neutral-3'>No devices found</span>}
         </div>
       )}
+      {show && hoveredDevice && searchResults.length !== 0 &&
+        <div className='hidden sm:block absolute left-full translate-y-2 translate-x-4 shadow rounded-lg bg-web-unifi-color-neutral-0 w-48'>
+          <DeviceCard device={hoveredDevice} />
+        </div>}
     </div>
   )
 }
