@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Header } from '../components/Header/Header'
 import data from '../data.json'
 import { fetchDevicesSuccess } from '../features/devices/devicesSlice'
-import { useAppDispatch } from '../hooks'
+import { useAppDispatch } from '../hooks/storeHooks'
 
 export const Root = () => {
   const dispatch = useAppDispatch()

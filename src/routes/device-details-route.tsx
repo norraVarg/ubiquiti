@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 import { DeviceDetails } from '../components/DeviceDetails/DeviceDetails'
 import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage'
 import { Device } from '../features/devices/definitions'
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../hooks/storeHooks'
 import { getPreviousAndNextDevices } from '../utils/utils'
 import { Navbar } from '../components/Navbar/Navbar'
 

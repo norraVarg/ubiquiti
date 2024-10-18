@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Device } from '../../features/devices/definitions'
-import { useAppSelector } from '../../hooks'
+import { useAppSelector } from '../../hooks/storeHooks'
 import { Tooltip } from '../Tooltip/Tooltip'
 
 interface Props {

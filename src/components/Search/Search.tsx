@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Device } from '../../features/devices/definitions'
-import { useAppSelector } from '../../hooks'
+import { useAppSelector } from '../../hooks/storeHooks'
 import { Link } from 'react-router-dom'
 import { getMatchingProperty } from '../../utils/utils'
 import ClearButton from '../../component-lib/CloseButton/CloseButton'
 import { DeviceCard } from '../DeviceCard/DeviceCard'
+import { useDebounce } from '../../hooks/useDebounce'
 
 export interface SearchMatch {
   property: string
@@ -23,6 +24,7 @@ export const Search = () => {
   const [hoveredDevice, setHoveredDevice] = useState<Device | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const filteredDevices = useAppSelector((state) => state.devices.filteredDevices)
+  const debouncedSearchTerm = useDebounce(searchTerm, 300)
 
   const handleClickOutside = (event: MouseEvent) => {
     if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -40,6 +42,16 @@ export const Search = () => {
     setSearchTerm(event.target.value)
   }
 
+  const onClickClearButton = () => {
+    setSearchTerm('')
+    setShow(false)
+  }
+
+  const onMouseDownClearButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
@@ -48,14 +60,14 @@ export const Search = () => {
   }, [])
 
   useEffect(() => {
-    if (searchTerm === '') {
+    if (debouncedSearchTerm === '') {
       setSearchResults([])
       setShow(false)
 
       return
     }
 
-    const searchLower = searchTerm.toLowerCase()
+    const searchLower = debouncedSearchTerm.toLowerCase()
 
     const results = filteredDevices.reduce((acc, device) => {
       const match = getMatchingProperty(device, searchLower)
@@ -69,17 +81,7 @@ export const Search = () => {
 
     setSearchResults(results)
     setShow(true)
-  }, [searchTerm])
-
-  const onClickClearButton = () => {
-    setSearchTerm('')
-    setShow(false)
-  }
-
-  const onMouseDownClearButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault()
-    e.stopPropagation()
-  }
+  }, [debouncedSearchTerm])
 
   return (
     <div ref={containerRef} className="relative w-full max-w-md sm:min-w-96 sm:ml-1.5">
@@ -115,7 +117,7 @@ export const Search = () => {
               </span>
             </Link>
           ))}
-          {searchResults.length === 0 && <span className='cursor-pointer flex items-center bg-web-unifi-color-neutral-0 px-2 py-1 h-fit transition ease-in-out duration-300 hover:bg-web-unifi-color-ublue-06 hover:bg-opacity-5 text-web-unifi-text-1 text-opacity-60 border-b border-web-unifi-color-neutral-3'>No devices found</span>}
+          {searchResults.length === 0 && <span className='flex items-center bg-web-unifi-color-neutral-0 px-2 py-1 h-fit text-web-unifi-text-1 text-opacity-60'>No devices found</span>}
         </div>
       )}
       {show && hoveredDevice && searchResults.length !== 0 &&

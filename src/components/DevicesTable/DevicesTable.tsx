@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks'
+import { useAppSelector } from '../../hooks/storeHooks'
 import { GridView } from '../GridView/GridView'
 import { ListView } from '../ListView/ListView'
 

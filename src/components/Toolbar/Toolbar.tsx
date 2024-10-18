@@ -1,5 +1,5 @@
 import { setViewMode } from '../../features/devices/devicesSlice'
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks'
 import { Filter } from '../Filter/Filter'
 import { Search } from '../Search/Search'
 

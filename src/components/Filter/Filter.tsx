@@ -1,6 +1,6 @@
 import { ProductLine } from '../../features/devices/definitions'
 import { setFilters } from '../../features/devices/devicesSlice'
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks'
 import { getUpdatedFilters } from '../../utils/utils'
 import { Menu } from '../Menu/Menu'
 
