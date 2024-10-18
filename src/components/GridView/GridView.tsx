@@ -11,13 +11,11 @@ export const GridView = (props: Props) => {
 
   return (
     <div className='grid grid-cols-[repeat(auto-fill,140px)] gap-5 justify-center md:justify-start md:grid-cols-[repeat(auto-fill,210px)] overflow-y-auto max-h-[calc(100vh-200px)] sm:max-h-[calc(100vh-180px)] px-2'>
-      {devices.map((device) => {
-        return (
-          <Link to={`device?id=${device.id}`} state={device} key={device.id}>
-            <DeviceCard device={device} />
-          </Link>
-        )
-      })}
+      {devices.map((device) => (
+        <Link to={`device?id=${device.id}`} state={device} key={device.id} className='grid'>
+          <DeviceCard device={device} />
+        </Link>
+      ))}
     </div>
   )
 }
