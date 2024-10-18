@@ -3,6 +3,7 @@ import { Device } from '../../features/devices/definitions'
 import { useAppSelector } from '../../hooks'
 import { Link } from 'react-router-dom'
 import { getMatchingProperty } from '../../utils/utils'
+import ClearButton from '../../component-lib/CloseButton/CloseButton'
 
 export interface SearchMatch {
   property: string
@@ -68,18 +69,30 @@ export const Search = () => {
     setShow(true)
   }, [searchTerm])
 
+  const onClickClearButton = () => {
+    setSearchTerm('')
+    setShow(false)
+  }
+
+  const onMouseDownClearButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
   return (
     <div ref={containerRef} className="relative w-full max-w-md sm:min-w-96 sm:ml-1.5">
       <svg className='absolute top-2.5 left-2 w-6 h-6 fill-web-unifi-color-neutral-8'>
         <path d="m16.853 16.146-2.847-2.844a6.25 6.25 0 1 0-.707.707l2.848 2.845a.496.496 0 0 0 .707-.002.498.498 0 0 0-.001-.706ZM4 9.25A5.256 5.256 0 0 1 9.25 4a5.256 5.256 0 0 1 5.25 5.25 5.256 5.256 0 0 1-5.25 5.25A5.256 5.256 0 0 1 4 9.25Z" />
       </svg>
-      {/* to do: add clear search button */}
+      <div className='absolute top-2.5 right-2'>
+        {searchTerm !== '' && <ClearButton onClick={onClickClearButton} onMouseDown={onMouseDownClearButton} />}
+      </div>
       <input
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
         onFocus={handleInputFocus}
-        className="pl-10 pr-2 py-2 rounded w-full bg-web-unifi-color-neutral-2 hover:bg-web-unifi-color-neutral-3 focus:outline focus:outline-thin focus:outline-web-unifi-color-ublue-06 active:outline active:outline-thin active:outline-web-unifi-color-ublue-06"
+        className="pl-10 pr-10 py-2 rounded w-full bg-web-unifi-color-neutral-2 hover:bg-web-unifi-color-neutral-3 focus:outline focus:outline-thin focus:outline-web-unifi-color-ublue-06 active:outline active:outline-thin active:outline-web-unifi-color-ublue-06"
         placeholder="Search by name, abbreviation or shortnames"
       />
       {show && (
