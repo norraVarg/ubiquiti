@@ -34,7 +34,6 @@ describe('getMatchingProperty', () => {
       product: {
         name: 'UniFi Dream Machine'
       },
-      shortnames: [],
     } as unknown as Device
     const term = 'dream'
     const match = getMatchingProperty(device, term)
@@ -46,23 +45,10 @@ describe('getMatchingProperty', () => {
       product: {
         abbrev: 'UDM'
       },
-      shortnames: [],
     } as unknown as Device
     const term = 'udm'
     const match = getMatchingProperty(device, term)
     expect(match).toEqual({ property: 'Product Abbreviation', value: 'UDM' })
-  })
-
-  it('should return matching property for short name', () => {
-    const device = {
-      product: {
-        name: 'UniFi Dream Machine'
-      },
-      shortnames: ['UDM'],
-    } as Device
-    const term = 'udm'
-    const match = getMatchingProperty(device, term)
-    expect(match).toEqual({ property: 'Short Name', value: 'UDM' })
   })
 
   it('should return null when no match is found', () => {
@@ -70,7 +56,6 @@ describe('getMatchingProperty', () => {
       product: {
         name: 'UniFi Dream Machine'
       },
-      shortnames: [],
     } as unknown as Device
     const term = 'nano'
     const match = getMatchingProperty(device, term)
@@ -82,7 +67,6 @@ describe('getMatchingProperty', () => {
       product: {
         name: undefined
       },
-      shortnames: [],
     } as unknown as Device
     const term = 'dream'
     const match = getMatchingProperty(device, term)
@@ -94,19 +78,6 @@ describe('getMatchingProperty', () => {
       product: {
         abbrev: undefined
       },
-      shortnames: [],
-    } as unknown as Device
-    const term = 'udm'
-    const match = getMatchingProperty(device, term)
-    expect(match).toBeNull()
-  })
-
-  it('should return null when shortnames is undefined', () => {
-    const device = {
-      product: {
-        name: 'UniFi Dream Machine'
-      },
-      shortnames: undefined,
     } as unknown as Device
     const term = 'udm'
     const match = getMatchingProperty(device, term)

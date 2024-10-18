@@ -23,6 +23,7 @@ export default {
         'screen-82': '82vh',
       },
       maxWidth: {
+        sm: '450px',
         'screen-80': '80vw',
       },
       width: {

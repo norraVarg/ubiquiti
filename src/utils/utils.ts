@@ -27,9 +27,6 @@ export const getMatchingProperty = (device: Device, term: string): SearchMatch |
   if (device.product.abbrev?.toLowerCase().includes(term)) {
     return { property: 'Product Abbreviation', value: device.product.abbrev }
   }
-  if (device.shortnames?.some(name => name.toLowerCase().includes(term))) {
-    return { property: 'Short Name', value: device.shortnames.find(name => name.toLowerCase().includes(term)) || '' }
-  }
   return null
 }
 
