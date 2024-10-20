@@ -3,9 +3,9 @@ interface Props {
 }
 
 export const ErrorMessage = (props: Props) => {
-  const { message = 'Sorry, an unexpected error has occurred. Please contact tech team.' } = props
+  const { message = 'Sorry, an unexpected error has occurred. Please contact our tech team.' } = props
 
   return (
-    <p className='flex justify-center'>{message}</p>
+    <div className='flex justify-center items-center h-screen'>{message}</div>
   )
 }

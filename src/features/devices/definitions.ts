@@ -88,3 +88,7 @@ export interface Device {
   videos: object
 }
 
+export interface GetDevicesResponse {
+  devices: Device[]
+  version: string
+}
