@@ -1,7 +1,61 @@
 
 import { describe, expect, it, } from 'vitest'
-import { Device, ProductLine } from '../features/devices/definitions'
-import { getMatchingProperty, getPreviousAndNextDevices, getTooltipStyles, getUpdatedFilters, TooltipPosition } from './utils'
+import { DEFAULT_DEVICE_INFORMATION, Device, ProductLine } from '../features/devices/definitions'
+import { getMatchingProperty, getPreviousAndNextDevices, getTooltipStyles, getUpdatedFilters, TooltipPosition, overrideParseErrorPropertiesWithDefaultValues } from './utils'
+import { z } from 'zod'
+
+describe('overrideParseErrorPropertiesWithDefaultValues', () => {
+  it('should override missing properties with default values', () => {
+    const device = {
+      icon: { id: 'icon1', resolutions: [[1, 2], [3, 4]] },
+      id: 'device1',
+      images: { nopadding: 'nopadding.jpg', topology: 'topology.jpg' },
+      line: { id: 'line1' },
+      product: { abbrev: 'D1', name: 'Device One' },
+    }
+
+    const issues = [
+      {
+        path: ['line', 'name'],
+      },
+      {
+        path: ['images', 'default'],
+      },
+      { path: ['unifi'] }
+    ] as z.ZodIssue[]
+
+    const updatedDevice = overrideParseErrorPropertiesWithDefaultValues(issues, device)
+
+    expect(updatedDevice.line.name).toBe(DEFAULT_DEVICE_INFORMATION.line.name)
+    expect(updatedDevice.images.default).toBe(DEFAULT_DEVICE_INFORMATION.images.default)
+    expect(updatedDevice.unifi).toEqual(DEFAULT_DEVICE_INFORMATION.unifi)
+    expect(updatedDevice.icon.id).toBe('icon1')
+    expect(updatedDevice.icon.resolutions).toEqual([[1, 2], [3, 4]])
+  })
+
+  it('should return the original device if there are no issues', () => {
+    const device = {
+      icon: { id: 'icon1', resolutions: [[1, 2], [3, 4]] },
+      id: 'device1',
+      images: { default: 'default.jpg', nopadding: 'nopadding.jpg', topology: 'topology.jpg' },
+      line: { id: 'line1', name: 'Line 1' },
+      product: { abbrev: 'D1', name: 'Device One' },
+      compliance: { modelName: 'Model X' },
+      deviceType: 'Type A',
+      shortnames: ['D1', 'Dev1'],
+      sku: 'SKU1',
+      sysid: 'SYS1',
+      sysids: ['SYS1'],
+      triplets: [{ k1: 'K1', k2: 'K2', k3: 'K3' }],
+    }
+
+    const issues: z.ZodIssue[] = []
+
+    const updatedDevice = overrideParseErrorPropertiesWithDefaultValues(issues, device)
+
+    expect(updatedDevice).toEqual(device)
+  })
+})
 
 describe('getTooltipStyles', () => {
   const testCases: { position: TooltipPosition; expected: string }[] = [
@@ -34,7 +88,7 @@ describe('getMatchingProperty', () => {
       product: {
         name: 'UniFi Dream Machine'
       },
-    } as unknown as Device
+    } as Device
     const term = 'dream'
     const match = getMatchingProperty(device, term)
     expect(match).toEqual({ property: 'Product Name', value: 'UniFi Dream Machine' })
@@ -43,9 +97,10 @@ describe('getMatchingProperty', () => {
   it('should return matching property for product abbreviation', () => {
     const device = {
       product: {
+        name: 'fake name',
         abbrev: 'UDM'
       },
-    } as unknown as Device
+    } as Device
     const term = 'udm'
     const match = getMatchingProperty(device, term)
     expect(match).toEqual({ property: 'Product Abbreviation', value: 'UDM' })
@@ -54,32 +109,11 @@ describe('getMatchingProperty', () => {
   it('should return null when no match is found', () => {
     const device = {
       product: {
-        name: 'UniFi Dream Machine'
+        name: 'UniFi Dream Machine',
+        abbrev: 'UDM',
       },
     } as unknown as Device
     const term = 'nano'
-    const match = getMatchingProperty(device, term)
-    expect(match).toBeNull()
-  })
-
-  it('should return null when product name is undefined', () => {
-    const device = {
-      product: {
-        name: undefined
-      },
-    } as unknown as Device
-    const term = 'dream'
-    const match = getMatchingProperty(device, term)
-    expect(match).toBeNull()
-  })
-
-  it('should return null when product abbreviation is undefined', () => {
-    const device = {
-      product: {
-        abbrev: undefined
-      },
-    } as unknown as Device
-    const term = 'udm'
     const match = getMatchingProperty(device, term)
     expect(match).toBeNull()
   })

@@ -1,5 +1,24 @@
+import { ZodIssue } from 'zod'
 import { SearchMatch } from '../components/Search/Search'
-import { Device, ProductLine } from '../features/devices/definitions'
+import { DEFAULT_DEVICE_INFORMATION, Device, ProductLine } from '../features/devices/definitions'
+
+export const overrideParseErrorPropertiesWithDefaultValues = (issues: ZodIssue[], device: any) => {
+  issues.forEach((issue) => {
+    const path = issue.path
+    let current: any = device
+    let defaultCurrent: any = DEFAULT_DEVICE_INFORMATION
+
+    for (let i = 0;i < path.length - 1;i++) {
+      current = current[path[i]]
+      defaultCurrent = defaultCurrent[path[i]]
+    }
+
+    const lastKey = path[path.length - 1]
+    current[lastKey] = defaultCurrent[lastKey]
+  })
+
+  return device
+}
 
 export const getUpdatedFilters = (filters: ProductLine[], toggledFilter: ProductLine) => {
   if (filters.includes(toggledFilter)) {

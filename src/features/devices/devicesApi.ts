@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { DEFAULT_DEVICE_INFORMATION, DeviceSchema, GetDevicesResponse, GetDevicesResponseSchema } from './definitions'
+import { overrideParseErrorPropertiesWithDefaultValues } from '../../utils/utils'
+import { DeviceSchema, GetDevicesResponse, GetDevicesResponseSchema } from './definitions'
 
 export const devicesApi = createApi({
   reducerPath: 'devicesApi',
@@ -12,14 +13,16 @@ export const devicesApi = createApi({
         if (parsedResponse.success) {
           return parsedResponse.data
         } else {
-          // to improve: log parse error for missing or mismatched properties
+          // to improve: send parse error for missing or mismatched properties 
+          // in sentry or other logging service
 
           const validDevices = response.devices.map((device) => {
             const parsedDevice = DeviceSchema.safeParse(device)
             if (parsedDevice.success) {
               return parsedDevice.data
             } else {
-              return { ...DEFAULT_DEVICE_INFORMATION, ...device }
+              const deviceDataWithDefaultValues = overrideParseErrorPropertiesWithDefaultValues(parsedDevice.error.issues, device)
+              return deviceDataWithDefaultValues
             }
           })
 
