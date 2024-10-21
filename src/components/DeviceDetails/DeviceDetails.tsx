@@ -1,6 +1,7 @@
 import { Device } from '../../features/devices/definitions'
 import { useModal } from '../ModalProvider/ModalProvider'
 import { JsonCard } from '../JsonCard/JsonCard'
+import { Label } from '../../component-lib/Label/Label'
 
 interface Props {
   device: Device
@@ -29,31 +30,31 @@ export const DeviceDetails = (props: Props) => {
         <h1 className='font-bold text-2xl text-opacity-85 text-web-unifi-text-0'>{device.product.name}</h1>
         <span className='text-web-unifi-text-0 text-opacity-45 mb-4'>{device.line.name}</span>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>Product Line</span>
+          <Label>Product Line</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.line.name}</span>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>ID</span>
+          <Label>ID</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.line.id}</span>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>Name</span>
+          <Label>Name</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.product.name}</span>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>Short Names</span>
+          <Label>Short Names</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.shortnames.join(', ')}</span>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>Max. Power</span>
+          <Label>Max. Power</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.unifi.network.radios.na.maxPower}</span>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>Speed</span>
+          <Label>Speed</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.unifi.network.details.ipsThroughput}</span>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8'>
-          <span className='text-nowrap text-web-unifi-text-0 text-opacity-85'>Number of Ports</span>
+          <Label>Number of Ports</Label>
           <span className='md:text-end text-web-unifi-text-0 text-opacity-45'>{device.unifi.network.numberOfPorts}</span>
         </div>
         <button className='mt-4 md:mt-16 text-start text-web-unifi-color-ublue-06 w-fit' onClick={onClickShowJson}>See All Details as JSON</button>

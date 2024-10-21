@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Device } from '../../features/devices/definitions'
 import { TimeoutTooltip } from '../Tooltip/TimeoutTooltip'
+import { TextButton } from '../../component-lib/TextButton/TextButton'
 
 interface Props {
   data: Device
@@ -30,9 +31,9 @@ export const JsonCard = (props: Props) => {
         )}
       </div>
       <div className='flex items-center gap-2 w-full xs:justify-center'>
-        <button onClick={togglePretty} className='text-nowrap text-web-unifi-text-3 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300'>{isPretty ? 'I prefer raw :)' : 'Make it Pretty!'}</button>
+        <TextButton text={`${isPretty ? 'I prefer raw :)' : 'Make it Pretty!'}`} onClick={togglePretty} />
         <TimeoutTooltip position='right' message={<div className='flex items-center w-fit text-nowrap text-sm'>Copied to clipboard!</div>} >
-          <button onClick={onClickCopyJson} className='text-nowrap text-web-unifi-text-3 hover:bg-web-unifi-color-neutral-2 rounded px-2 py-1 text-sm transition ease-in-out duration-300'>Copy JSON</button>
+          <TextButton text='Copy JSON' onClick={onClickCopyJson} />
         </TimeoutTooltip>
       </div>
     </div>
