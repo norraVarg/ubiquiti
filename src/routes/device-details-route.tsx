@@ -1,38 +1,43 @@
-import { useState } from 'react'
-import { useLocation } from "react-router-dom"
+import { useMemo } from 'react'
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { DeviceDetails } from '../components/DeviceDetails/DeviceDetails'
 import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage'
-import { Device } from '../features/devices/definitions'
+import { Navbar } from '../components/Navbar/Navbar'
 import { useAppSelector } from '../hooks/storeHooks'
 import { getPreviousAndNextDevices } from '../utils/utils'
-import { Navbar } from '../components/Navbar/Navbar'
 
 export const DeviceDetailsRoute = () => {
-  // to improve:: 
-  // fetch device data from api with device id in the url
-  // instead of passing preloaded device data via location state
-  const { state } = useLocation()
-  const device = state as Device
-
-  const [currentDevice, setCurrentDevice] = useState<Device>(device)
-
   const filteredDevices = useAppSelector((state) => state.devices.filteredDevices)
+  const navigate = useNavigate()
 
-  const { previousDevice, nextDevice } = getPreviousAndNextDevices(filteredDevices, currentDevice.id)
+  const [searchParams] = useSearchParams()
+  const deviceId = searchParams.get('id')
+
+  const { currentDevice, previousDevice, nextDevice } = useMemo(() => {
+    const currentDevice = filteredDevices.find((device) => device.id === deviceId)
+
+    if (!currentDevice) {
+      return {}
+    }
+
+    const { previousDevice, nextDevice } = getPreviousAndNextDevices(filteredDevices, currentDevice.id)
+
+    return { currentDevice, previousDevice, nextDevice }
+  }, [filteredDevices, deviceId])
 
   const onClickPrevious = () => {
     if (previousDevice) {
-      setCurrentDevice(previousDevice)
+      navigate(`/device?id=${previousDevice.id}`)
     }
   }
 
   const onClickNext = () => {
     if (nextDevice) {
-      setCurrentDevice(nextDevice)
+      navigate(`/device?id=${nextDevice.id}`)
     }
   }
 
-  return device ? (
+  return currentDevice ? (
     <div className='flex flex-col justify-center gap-4'>
       {/* todo: make the Navbar stick to top when scroll down the page */}
       <Navbar
