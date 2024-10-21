@@ -21,10 +21,10 @@ export const getPreviousAndNextDevices = (devices: Device[], currentDeviceId: st
 }
 
 export const getMatchingProperty = (device: Device, term: string): SearchMatch | null => {
-  if (device.product.name?.toLowerCase().includes(term)) {
+  if (device.product.name.toLowerCase().includes(term)) {
     return { property: 'Product Name', value: device.product.name }
   }
-  if (device.product.abbrev?.toLowerCase().includes(term)) {
+  if (device.product.abbrev.toLowerCase().includes(term)) {
     return { property: 'Product Abbreviation', value: device.product.abbrev }
   }
   return null
