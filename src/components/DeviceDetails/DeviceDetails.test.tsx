@@ -70,7 +70,7 @@ describe('DeviceDetails', () => {
 
     const modalTitle = await screen.findByText('Product Name', { selector: 'h2' })
     expect(modalTitle).toBeInTheDocument()
-    expect(screen.getByText('Make it Pretty!', { selector: 'button' })).toBeInTheDocument()
+    expect(screen.getByText('Make it pretty!', { selector: 'button' })).toBeInTheDocument()
     expect(screen.getByText('Copy JSON', { selector: 'button' })).toBeInTheDocument()
 
     screen.getByRole('close-button').click()
