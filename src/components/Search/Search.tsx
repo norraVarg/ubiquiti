@@ -103,7 +103,7 @@ export const Search = () => {
         <div className="absolute top-full right-0 translate-y-2 rounded-lg shadow-lg bg-web-unifi-color-neutral-0 w-full max-h-60 overflow-y-auto">
           {searchResults.map(({ device, match }, index) => (
             <Link
-              to={`device?id=${device.id}`}
+              to={`devices/${device.id}`}
               onMouseEnter={() => setHoveredDevice(device)}
               onMouseLeave={() => setHoveredDevice(null)}
               className="cursor-pointer flex items-center bg-web-unifi-color-neutral-0 px-3 py-1.5 h-fit transition ease-in-out duration-300 hover:bg-web-unifi-color-ublue-06 hover:bg-opacity-5 text-web-unifi-text-1 text-opacity-60 border-b border-web-unifi-color-neutral-3"

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Device } from '../../features/devices/definitions'
 import { useAppSelector } from '../../hooks/storeHooks'
 import { Tooltip } from '../Tooltip/Tooltip'
@@ -6,21 +6,29 @@ import { Tooltip } from '../Tooltip/Tooltip'
 interface Props {
   previousDevice: Device | undefined
   nextDevice: Device | undefined
-  onClickPrevious: () => void
-  onClickNext: () => void
 }
 
 export const Navbar = (props: Props) => {
   const {
     previousDevice,
     nextDevice,
-    onClickPrevious,
-    onClickNext,
   } = props
 
+  const navigate = useNavigate()
   const filters = useAppSelector((state) => state.devices.filters)
   const hasFilters = filters.length > 0
 
+  const onClickPrevious = () => {
+    if (previousDevice) {
+      navigate(`/devices/${previousDevice.id}`)
+    }
+  }
+
+  const onClickNext = () => {
+    if (nextDevice) {
+      navigate(`/devices/${nextDevice.id}`)
+    }
+  }
   return (
     <div className='flex items-center justify-between'>
       {/* todo: scroll to the same device when click Back button */}

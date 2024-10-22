@@ -88,6 +88,9 @@ export type DeviceIcon = z.infer<typeof DeviceIconSchema>
 export type Device = z.infer<typeof DeviceSchema>
 export type GetDevicesResponse = z.infer<typeof GetDevicesResponseSchema>
 
+export const GetDeviceResponseSchema = DeviceSchema
+export type GetDeviceResponse = z.infer<typeof GetDeviceResponseSchema>
+
 export const DEFAULT_DEVICE_INFORMATION: Device = {
   icon: { id: '--', resolutions: [] },
   id: '--',

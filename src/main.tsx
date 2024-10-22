@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import './index.css'
 import { DeviceDetailsRoute } from './routes/device-details-route'
 import { Root } from './routes/root'
@@ -21,8 +21,12 @@ const router = createBrowserRouter([
         element: <DevicesRoute />,
       },
       {
-        path: '/device',
+        path: '/devices/:id',
         element: <DeviceDetailsRoute />,
+      },
+      {
+        path: '/devices',
+        element: <Navigate to="/" replace />,
       },
     ],
   },
