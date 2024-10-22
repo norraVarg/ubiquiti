@@ -7,7 +7,7 @@ const CloseButton = (props: Props) => {
   const { onClick, onMouseDown } = props
 
   return (
-    <button onClick={onClick} onMouseDown={onMouseDown} className='cursor hover:bg-web-unifi-color-neutral-2 rounded-full p-1'>
+    <button onClick={onClick} onMouseDown={onMouseDown} role='close-button' className='cursor hover:bg-web-unifi-color-neutral-2 rounded-full p-1'>
       <svg className="h-6 w-6 stroke-web-unifi-color-neutral-8" viewBox="0 0 24 24">
         <path d="M6 18L18 6M6 6l12 12" />
       </svg>

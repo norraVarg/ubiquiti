@@ -15,7 +15,7 @@ export const Root = () => {
     if (data) {
       dispatch(fetchDevicesSuccess(data.devices))
     }
-  }, [data])
+  }, [data, dispatch])
 
   if (isLoading) return <ErrorMessage message='Fetching devices...' />
   if (error) return <ErrorMessage message='Failded to fetch devices' />

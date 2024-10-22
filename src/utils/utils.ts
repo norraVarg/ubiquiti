@@ -2,10 +2,13 @@ import { ZodIssue } from 'zod'
 import { SearchMatch } from '../components/Search/Search'
 import { DEFAULT_DEVICE_INFORMATION, Device, ProductLine } from '../features/devices/definitions'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const overrideParseErrorPropertiesWithDefaultValues = (issues: ZodIssue[], device: any) => {
   issues.forEach((issue) => {
     const path = issue.path
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let current: any = device
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let defaultCurrent: any = DEFAULT_DEVICE_INFORMATION
 
     for (let i = 0;i < path.length - 1;i++) {

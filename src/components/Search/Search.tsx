@@ -81,7 +81,7 @@ export const Search = () => {
 
     setSearchResults(results)
     setShow(true)
-  }, [debouncedSearchTerm])
+  }, [debouncedSearchTerm, filteredDevices])
 
   return (
     <div ref={containerRef} className="relative w-full min-w-[320px] max-w=[440px] xs:w-[344px]">
