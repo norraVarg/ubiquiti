@@ -8,7 +8,7 @@ export const DeviceCard = (props: Props) => {
   const { device } = props
 
   return (
-    <div className='transition ease-in-out duration-300 hover:border-web-unifi-color-ublue-06 grid grid-cols-1 grid-rows-[100px_1fr_1fr] border-web-unifi-color-neutral-3 border rounded-lg shadow-sm'>
+    <div role='device-card' className='transition ease-in-out duration-300 hover:border-web-unifi-color-ublue-06 grid grid-cols-1 grid-rows-[100px_1fr_1fr] border-web-unifi-color-neutral-3 border rounded-lg shadow-sm'>
       <div className='bg-web-unifi-color-neutral-1 grid col-start-1 row-start-1 row-span-1 justify-center items-center rounded-lg'>
         <img className='w-24 h-24' src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_128x128.png`} />
       </div>

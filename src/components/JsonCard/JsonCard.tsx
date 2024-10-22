@@ -31,7 +31,7 @@ export const JsonCard = (props: Props) => {
         )}
       </div>
       <div className='flex items-center gap-2 w-full xs:justify-center'>
-        <TextButton text={`${isPretty ? 'I prefer raw :)' : 'Make it Pretty!'}`} onClick={togglePretty} />
+        <TextButton text={`${isPretty ? 'I prefer raw :)' : 'Make it pretty!'}`} onClick={togglePretty} />
         <TimeoutTooltip position='right' message={<div className='flex items-center w-fit text-nowrap text-sm'>Copied to clipboard!</div>} >
           <TextButton text='Copy JSON' onClick={onClickCopyJson} />
         </TimeoutTooltip>

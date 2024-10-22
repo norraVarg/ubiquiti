@@ -31,7 +31,7 @@ export const Filter = () => {
 
   return (
     <Menu trigger={<button className={`${hasFilter ? 'text-web-unifi-color-ublue-06' : 'text-web-unifi-text-0 text-opacity-45'} hover:bg-web-unifi-color-neutral-2 px-2.5 py-1.5 rounded border border-web-unifi-color-neutral-0 focus:border focus:border-web-unifi-color-ublue-06 transition ease-in-out duration-300`}>Filter</button>}>
-      <div className='w-32 flex flex-col gap-4'>
+      <div className='w-32 flex flex-col gap-4' role='filter-options'>
         <h3 className='font-bold'>Product line</h3>
         <div className='flex flex-col gap-2'>
           {FILTERS.map((filter) => (
@@ -41,7 +41,7 @@ export const Filter = () => {
             </div>
           ))}
         </div>
-        <button onClick={onClickReset} className={`${hasFilter ? 'text-web-unifi-color-red-06' : 'text-web-unifi-color-red-03'} self-start`}>Reset</button>
+        <button onClick={onClickReset} disabled={fitlers.length === 0} className={`${hasFilter ? 'text-web-unifi-color-red-06' : 'text-web-unifi-color-red-03'} self-start`}>Reset</button>
       </div>
       {/* todo: add Other option to display new product line devices that FE is not expected */}
     </Menu>
