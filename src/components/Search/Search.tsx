@@ -24,7 +24,7 @@ export const Search = () => {
   const [hoveredDevice, setHoveredDevice] = useState<Device | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const filteredDevices = useAppSelector((state) => state.devices.filteredDevices)
-  const debouncedSearchTerm = useDebounce(searchTerm, 300)
+  const debouncedSearchTerm = useDebounce(searchTerm, 200)
 
   const handleClickOutside = (event: MouseEvent) => {
     if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -40,6 +40,9 @@ export const Search = () => {
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value)
+    if (event.target.value === '') {
+      setShow(false)
+    }
   }
 
   const onClickClearButton = () => {
