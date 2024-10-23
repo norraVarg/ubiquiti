@@ -13,8 +13,8 @@ This project is a Ubiquiti assignment application. You can view the deployed app
 
 
 ### Requirements
-- Implement UI/UX according to Figma design.
-- Handle unexpected interface/contract from backend gracefully.
+- Implement UI/UX according to the Figma file.
+- Handle unexpected interface/contract changes from the backend gracefully.
 - Implement features/functions such as:
   - Search devices
   - Filter devices
@@ -22,15 +22,22 @@ This project is a Ubiquiti assignment application. You can view the deployed app
   - Device details page with navigation
 
 ### Additional Features
+#### Search and Filter
 - Search devices by both product name and abbreviation.
-- Hover on search result to see device review with device image and more details.
 - Debounce search to reduce API calls and UI re-rendering.
-- Add hover effect for list view and grid view to highlight the device being checked.
-- Provide clear search button.
-- Highlight filter is activated when navigating in device details page.
-- Toggle JSON displaying between raw and prettified format/style.
-- Provide button to copy JSON to clipboard.
-- Practice responsive design so the UI looks good on devices with different resolutions.
+- Provide a clear search button.
+
+#### UI/UX Enhancements
+- Hover on search results to see device reviews with device images and more details.
+- Add hover effects for list view and grid view to highlight the device being checked.
+- Implement responsive design to ensure the UI looks good on devices with different resolutions.
+
+#### Device Details Page
+- Update the URL with the device ID for easy sharing when navigating devices on the device details page.
+- Display a notification in the device details page when the filter is active.
+- Toggle JSON display between raw and prettified formats.
+- Provide a button to copy JSON to the clipboard.
+
 
 ### Automation Tests
 - Unit tests
@@ -38,6 +45,7 @@ This project is a Ubiquiti assignment application. You can view the deployed app
 - E2E tests
 
 ## How to Run
+
 ### Run App Locally
 
 _Recommended: Use Node.js version 20 and Google Chrome for the best experience._
@@ -70,4 +78,3 @@ To run end-to-end tests with Cypress, use the following command:
 ```bash
 npm run cy
 ```
-
