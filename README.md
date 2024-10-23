@@ -45,7 +45,7 @@ This project is a Ubiquiti assignment application. You can view the deployed app
 - E2E tests
 
 ### Tools and Technologies
-This project uses the following tools and technologies: TypeScript, React, Redux RTK, Tailwind CSS, zod, Vite, Vitest, Cypress.
+React, Redux RTK, Tailwind CSS, TypeScript, Vite, Vitest, Cypress, zod.
 
 
 ### How to Run
