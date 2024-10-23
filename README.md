@@ -1,7 +1,8 @@
 # Ubiquiti Assignment
 Deployed [app](https://ubiquiti-nine.vercel.app/)
 
-### Run app locally (_Recommend to use node 20 and Chrome_)
+### Run app locally
+(_Recommend to use node 20 and Chrome_)
 #### Step 1
 ```bash
 npm install
