@@ -6,6 +6,7 @@ This project is a Ubiquiti assignment application. You can view the deployed app
 - [Requirements](#requirements)
 - [Additional Features](#additional-features)
 - [Automation Tests](#automation-tests)
+- [Tools and Technologies](#tools-and-technologies)
 - [How to Run](#how-to-run)
   - [Run App Locally](#run-app-locally)
   - [Run Unit Tests](#run-unit-tests)
@@ -38,42 +39,45 @@ This project is a Ubiquiti assignment application. You can view the deployed app
 - Toggle JSON display between raw and prettified formats.
 - Provide a button to copy JSON to the clipboard.
 
-
 ### Automation Tests
 - Unit tests
 - Component tests
 - E2E tests
 
-## How to Run
+### Tools and Technologies
+This project uses the following tools and technologies: TypeScript, React, Redux RTK, Tailwind CSS, zod, Vite, Vitest, Cypress.
 
-### Run App Locally
 
-_Recommended: Use Node.js version 20 and Google Chrome for the best experience._
+### How to Run
+
+#### Run App Locally
+
+(_Recommended: Use Node.js version 20 and Google Chrome for the best experience._)
 
 To run the app locally, follow these steps:
 
 
-1. **Install Dependencies**:
+1. Install Dependencies:
   ```bash
   npm install
   ```
 
-2. **Run the App Locally**:
+2. Run the App Locally:
   ```bash
   npm run dev
   ```
 
-3. **Open the App**:
+3. Open the App:
   Open your browser and navigate to `http://localhost:5173`.
 
 
-### Run Unit Tests
+#### Run Unit Tests
 To run unit tests, use the following command:
 ```bash
 npm test
 ```
 
-### Run E2E Tests
+#### Run E2E Tests
 To run end-to-end tests with Cypress, use the following command:
 ```bash
 npm run cy
