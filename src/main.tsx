@@ -9,6 +9,7 @@ import { DevicesRoute } from './routes/devices-route'
 import { ModalProvider } from './components/ModalProvider/ModalProvider'
 import { store } from './store'
 import { ErrorMessage } from './components/ErrorMessage/ErrorMessage'
+import { DemosRoute } from './routes/demos-route'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/devices',
         element: <Navigate to="/" replace />,
+      },
+      {
+        path: '/demos',
+        element: <DemosRoute />,
       },
     ],
   },

@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -33,6 +36,7 @@ export default {
       },
     },
     colors: {
+      ...colors,
       'web-unifi-text-0': '#000000',
       'web-unifi-text-1': '#212327',
       'web-unifi-text-2': '#50565E',
@@ -47,7 +51,7 @@ export default {
       'web-unifi-color-ublue-06': '#006FFF',
       'web-unifi-color-red-03': '#F9B0B2',
       'web-unifi-color-red-06': '#F03A3E',
-    }
+    },
   },
   plugins: [],
 }
